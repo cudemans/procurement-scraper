@@ -7,6 +7,7 @@ from selenium import webdriver
 
 class ProcurementSpider(scrapy.Spider):
     name = 'procurement'
+    # change start url here - this will change for both scrapy and selenium
     url = 'http://search.ccgp.gov.cn/bxsearch?searchtype=1&page_index=1&bidSort=0&buyerName=&projectId=&pinMu=&bidType=7&dbselect=bidx&kw=%E5%85%AC%E5%85%B1%E5%AE%89%E5%85%A8&start_time=2018%3A12%3A03&end_time=2019%3A06%3A02&timeType=6&displayZone=&zoneId=&pppStatus=0&agentName='
     allowed_domains = ['www.ccgp.gov.cn']
     start_urls = [url]
@@ -21,6 +22,7 @@ class ProcurementSpider(scrapy.Spider):
 
     def parse(self, response):
         responses = []
+        # change number of pages to scrape here
         number_of_pages = 8
         for page in range(number_of_pages):
             responses.append(self.driver.page_source)
